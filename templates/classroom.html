@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Classroom</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="/static/classroom.js" defer></script>
+</head>
+
+<body>
+
+<h1 style="text-align:center;">🧠 AI Classroom Simulation</h1>
+<p style="text-align:center;">Interactive students with real-time questions</p>
+
+<!-- 🎓 STUDENTS -->
+<div class="classroom">
+
+    <!-- ENGAGED -->
+    <div class="student" id="student1">
+        <img src="/static/engaged.jpg">
+        <h3>Engaged Student</h3>
+
+        <div class="questions">
+            <button onclick="askPreset(this)">Can you repeat that?</button>
+            <button onclick="askPreset(this)">This is interesting!</button>
+            <button onclick="askPreset(this)">Give more examples</button>
+            <button onclick="askPreset(this)">What comes next?</button>
+            <button onclick="askPreset(this)">I understood this</button>
+            <button onclick="askPreset(this)">Is this important?</button>
+        </div>
+    </div>
+
+    <!-- CONFUSED -->
+    <div class="student" id="student2">
+        <img src="/static/confused.jpg">
+        <h3>Confused Student</h3>
+
+        <div class="questions">
+            <button onclick="askPreset(this)">I did not understand</button>
+            <button onclick="askPreset(this)">Explain again</button>
+            <button onclick="askPreset(this)">Why is this?</button>
+            <button onclick="askPreset(this)">This is confusing</button>
+            <button onclick="askPreset(this)">Simplify this</button>
+            <button onclick="askPreset(this)">What does this mean?</button>
+        </div>
+    </div>
+
+    <!-- BORED -->
+    <div class="student" id="student3">
+        <img src="/static/bored.jpg">
+        <h3>Bored Student</h3>
+
+        <div class="questions">
+            <button onclick="askPreset(this)">This is too slow</button>
+            <button onclick="askPreset(this)">Move faster</button>
+            <button onclick="askPreset(this)">I am bored</button>
+            <button onclick="askPreset(this)">Skip this</button>
+            <button onclick="askPreset(this)">Is this important?</button>
+            <button onclick="askPreset(this)">When will this end?</button>
+        </div>
+    </div>
+
+</div>
+
+<!-- 📊 SCORE BOARD (CORRECT POSITION) -->
+<div id="score-board">
+    <h3>📊 Live Performance</h3>
+
+    <p>Clarity: <span id="clarity">0</span>/10</p>
+    <p>Confidence: <span id="confidence">0</span>/10</p>
+    <p>Expression: <span id="expression">0</span>/10</p>
+    <p>Content: <span id="content">0</span>/10</p>
+
+    <h2>Overall: <span id="overall">0</span>/10</h2>
+</div>
+
+<!-- 💬 CHAT -->
+<div id="chat-box">
+    <h3>💬 Live Interaction</h3>
+    <div id="chat-messages"></div>
+</div>
+
+<!-- 📈 ENGAGEMENT -->
+<h2 style="text-align:center; margin-top:30px;">
+    AI Engagement Level: High
+</h2>
+
+<!-- ✅ FINISH BUTTON -->
+<div style="text-align:center;">
+    <button onclick="finishDoubtSession()" style="margin-top:20px;">
+        Finish Doubt Session
+    </button>
+</div>
+
+</body>
+</html>

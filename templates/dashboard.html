@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<div class="center">
+<div class="card" style="width: 500px;">
+
+    <h1>📊 AI Performance Report</h1>
+
+    <canvas id="myChart"></canvas>
+
+    <h2>Overall Score: 6/10</h2>
+    <p>AI Confidence: 10/10</p>
+    <p>Engagement Score: 6/10</p>
+
+    <hr>
+
+    <h3>Detailed Scores:</h3>
+    <p>Pronunciation: 10/10</p>
+    <p>Clarity: 5/10</p>
+    <p>Expression: 6/10</p>
+    <p>Confidence: 5/10</p>
+    <p>Content Delivery: 5/10</p>
+
+    <hr>
+
+    <h3>💡 AI Suggestions:</h3>
+    <ul>
+        <li>Improve clarity</li>
+        <li>Be more expressive</li>
+        <li>Engage students</li>
+    </ul>
+
+    <button onclick="restart()">Start New Session</button>
+
+</div>
+</div>
+
+<script>
+const ctx = document.getElementById('myChart');
+
+new Chart(ctx, {
+    type: 'radar',   // ⭐ THIS IS IMPORTANT
+    data: {
+        labels: [
+            'Pronunciation',
+            'Clarity',
+            'Expression',
+            'Confidence',
+            'Content'
+        ],
+        datasets: [{
+            label: 'Performance',
+            data: [10, 5, 6, 5, 5],
+
+            borderWidth: 2
+        }]
+    },
+    options: {
+        scales: {
+            r: {
+                min: 0,
+                max: 10,
+                ticks: {
+                    stepSize: 2
+                }
+            }
+        }
+    }
+});
+
+function restart(){
+    window.location.href = "/";
+}
+</script>
+
+</body>
+</html>

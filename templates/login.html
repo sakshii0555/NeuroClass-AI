@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<div class="center">
+    <div class="card">
+
+        <h1>🧠 NeuroClass AI</h1>
+
+        <div class="auth-buttons">
+            <button>Sign In</button>
+            <button>Sign Up</button>
+        </div>
+
+        <form action="/login" method="POST">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+
+            <button type="submit">Login</button>
+        </form>
+
+    </div>
+</div>
+
+</body>
+</html>

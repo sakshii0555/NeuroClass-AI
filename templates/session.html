@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Session</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/face-api.js"></script>
+
+<script>
+const video = document.getElementById("video");
+
+navigator.mediaDevices.getUserMedia({ video: true })
+.then(stream => {
+    video.srcObject = stream;
+});
+
+let lastPosition = null;
+
+async function startDetection() {
+
+    await faceapi.nets.tinyFaceDetector.loadFromUri('/static/models');
+
+    setInterval(async () => {
+
+        const detections = await faceapi.detectSingleFace(
+            video,
+            new faceapi.TinyFaceDetectorOptions()
+        );
+
+        if (!detections) {
+            document.getElementById("emotion").innerText = "😕 Nervous (no face)";
+            return;
+        }
+
+        let box = detections.box;
+
+        if (lastPosition) {
+            let movement =
+                Math.abs(box.x - lastPosition.x) +
+                Math.abs(box.y - lastPosition.y);
+
+            if (movement < 10) {
+                document.getElementById("emotion").innerText = "😊 Confident";
+            } 
+            else if (movement < 30) {
+                document.getElementById("emotion").innerText = "😐 Neutral";
+            } 
+            else {
+                document.getElementById("emotion").innerText = "😕 Nervous";
+            }
+        }
+
+        lastPosition = box;
+
+    }, 1000);
+}
+
+video.addEventListener("play", startDetection);
+</script>
+
+<h1>🎥 Live Teaching Session</h1>
+
+<video id="video" autoplay></video>
+<p id="emotion" style="text-align:center; font-size:18px; margin-top:10px;">
+    AI Emotion: Detecting...
+</p>
+
+<div class="controls">
+    <button onclick="startTeaching()">Start Teaching</button>
+    <button onclick="endTeaching()">End Session</button>
+</div>
+
+<p>🧠 AI Monitoring: <span id="status">Idle</span></p>
+<script src="https://cdn.jsdelivr.net/npm/face-api.js"></script>
+
+<script>
+navigator.mediaDevices.getUserMedia({video:true})
+.then(stream=>{
+    document.getElementById("video").srcObject = stream;
+});
+
+function startTeaching(){
+    document.getElementById("status").innerText = "Active";
+}
+
+function endTeaching(){
+    window.location.href = "/classroom";
+}
+
+</script>
+
+</body>
+</html>
