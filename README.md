@@ -59,18 +59,6 @@ NeuroClass AI acts as a smart educational companion that:
 
 ---
 
-## 📂 Project Structure
-
-```text
-NeuroClass-AI
-│
-├── app.py
-├── static/
-│
-├── templates/
-│
-└── README.md
-```
 
 ---
 
